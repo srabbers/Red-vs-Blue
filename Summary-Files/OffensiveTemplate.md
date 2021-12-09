@@ -33,7 +33,7 @@ Nmap scan results for **`Target 1`** reveal the services and OS details below:
  ```bash
 $ nmap -sV 192.168.1.110
 ```
-[!(Nmap scan Target1)(https://github.com/srabbers/Final-Project/blob/main/Diagrams-and-Media/nmap-Services-OS.PNG)](https://github.com/srabbers/Final-Project/blob/main/Diagrams-and-Media/nmap-Services-OS.PNG)
+[![Nmap scan Target1](https://github.com/srabbers/Final-Project/blob/main/Diagrams-and-Media/nmap-Services-OS.PNG)](https://github.com/srabbers/Final-Project/blob/main/Diagrams-and-Media/nmap-Services-OS.PNG)
 
 The following vulnerabilities were identified on each target:
 - **`Target 1`**
