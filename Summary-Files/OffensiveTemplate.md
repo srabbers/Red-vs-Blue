@@ -18,10 +18,11 @@ Nmap scan results for each machine reveal the services and OS details below:
 ```bash
 $ nmap -sV 192.168.1.1-115
 ```
-[![Nmap Scans](/Diagrams-and-Media/Nmap-services-scan1.PNG)](https://github.com/srabbers/Final-Project/blob/b449f8140afd116352dfcbdbb37690b17afc84aa/Diagrams-and-Media/nmap-services-scan1.PNG)  
+[![Nmap Scans](https://github.com/srabbers/Final-Project/blob/b449f8140afd116352dfcbdbb37690b17afc84aa/Diagrams-and-Media/nmap-services-scan1.PNG)](https://github.com/srabbers/Final-Project/blob/b449f8140afd116352dfcbdbb37690b17afc84aa/Diagrams-and-Media/nmap-services-scan1.PNG)  
 
 
 [![Nmap Scans](/Diagrams-and-Media/Nmap-services-scan2.PNG)](https://github.com/srabbers/Final-Project/blob/b449f8140afd116352dfcbdbb37690b17afc84aa/Diagrams-and-Media/nmap-services-scan2.PNG)
+
 Nmap scan results for **`Target 1`** reveal the below services and OS details:
 
    - Hostname: **`Target 1`**
