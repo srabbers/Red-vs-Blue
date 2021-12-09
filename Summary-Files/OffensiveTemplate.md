@@ -27,7 +27,7 @@ Nmap scan results for **`Target 1`** reveal the services and OS details below:
 
    - Hostname: **`Target 1`**
    - Operating System: **`Linux`**
-   - Role on Network: **`Blue Team Machine`** 
+   - Role on Network: **`Blue Team Defense`** 
    - IP Address: **`192.168.1.110`**
  
  ```bash
