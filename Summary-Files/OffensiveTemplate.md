@@ -44,6 +44,7 @@ This nmap scan identifies the following services as potential points of entry:
    - Port 139/tcp open netbios-ssn (services) Samba smbd 3.X - 4.X
    - Port 445/tcp open netbios-ssn (services) Samba smbd 3.X - 4.X
 
+The following vulnerabilities were identified on **`Target 1`**:
 
  - [CVE-2021-28041 open SSH](https://nvd.nist.gov/vuln/detail/CVE-2021-28041)  
   - [CVE-2017-15710 Apache https 2.4.10](https://nvd.nist.gov/vuln/detail/CVE-2017-15710)
