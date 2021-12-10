@@ -35,13 +35,20 @@ $ nmap -sV 192.168.1.110
 ```
 [![Nmap scan Target1](https://github.com/srabbers/Final-Project/blob/main/Diagrams-and-Media/nmap-Services-OS.PNG)](https://github.com/srabbers/Final-Project/blob/main/Diagrams-and-Media/nmap-Services-OS.PNG)
 
-The following vulnerabilities were identified on each target:
-- **`Target 1`**
-  - List of
-  - Critical
-  - Vulnerabilities
+This nmap scan identifies the following services as potential points of entry:
 
-_TODO: Include vulnerability scan results to prove the identified vulnerabilities._
+
+   - Port 22/tcp open ssh (service) OpenSSH 6.7p1 Debian 5+deb8u4
+   - Port 80/tcp open http (service) Apache httpd 2.4.10 ((Debian))
+   - Port 111/tcp open rpcbind (service) 2-4 (RPC #100000)
+   - Port 139/tcp open netbios-ssn (services) Samba smbd 3.X - 4.X
+   - Port 445/tcp open netbios-ssn (services) Samba smbd 3.X - 4.X
+
+
+ - [CVE-2021-28041 open SSH](https://nvd.nist.gov/vuln/detail/CVE-2021-28041)  
+  - [CVE-2017-15710 Apache https 2.4.10](https://nvd.nist.gov/vuln/detail/CVE-2017-15710)
+  - [CVE-2017-8779 exploit on open rpcbind port could lead to remote DoS](https://nvd.nist.gov/vuln/detail/CVE-2017-8779)  
+  - [CVE-2017-7494 Samba NetBIOS](https://nvd.nist.gov/vuln/detail/CVE-2017-7494)  
 
 ### Exploitation
 _TODO: Fill out the details below. Include screenshots where possible._
