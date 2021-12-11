@@ -55,6 +55,7 @@ $ nmap -sV 192.168.1.110
 - Network Mapping and User Enumeration (WordPress site)
   - Nmap was used to discover the Network Topology.  
   - Nmap was also able to discover open ports allowing attacks to target specific services
+    - WPScan was used to enumerate the users 
 ### Exploitation
 _TODO: Fill out the details below. Include screenshots where possible._
 
