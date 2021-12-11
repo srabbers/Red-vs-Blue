@@ -54,8 +54,16 @@ $ nmap -sV 192.168.1.110
 **The following critical vulnerabilities were identified on **`Target 1`**:**
 - Network Mapping and User Enumeration (WordPress site)
   - Nmap was used to discover the Network Topology.  
-  - Nmap was also able to discover open ports allowing attacks to target specific services
-    - WPScan was used to enumerate the users 
+  - Nmap was also able to discover open ports and services running allowing attackers to target specific services
+    - WPScan was used to enumerate the usernames of the wordpress site
+- Weak User Password
+  -  A user had a weak password that was easily figured out by guessing
+     -  The guessed password was then used to SSH into the web server
+- 
+- Unsalted User Password Hash (WordPress database) 
+  - The attacker was able to use the MySQL wordpress database to aquire unsalted password hashes 
+   - These unsalted hashes are easily cracked using John the Ripper 
+
 ### Exploitation
 _TODO: Fill out the details below. Include screenshots where possible._
 
