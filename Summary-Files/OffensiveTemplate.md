@@ -54,25 +54,45 @@ $ nmap -sV 192.168.1.110
 **The following critical vulnerabilities were identified on **`Target 1`**:**
 - Network Mapping and User Enumeration (WordPress site)
   - Nmap was used to discover the Network Topology.  
-  - Nmap was also able to discover open ports and services running allowing attackers to target specific services
+  - Nmap was able to discover open ports and services running allowing attackers to target specific services
     - WPScan was used to enumerate the usernames of the wordpress site
 - Weak User Password
   -  A user had a weak password that was easily figured out by guessing
-     -  The guessed password was then used to SSH into the web server
-- 
+     -  The guessed password was then used to SSH into the web server allowing the attacker access to confidential data
+- MySQL Database Access  
+  - The attacker was able to discover a file on a users machine containing login information for the      MySQL database  
+    - They were able to use the login information to gain access to the MySQL database  
+- MySQL Data Exfiltration  
+  - By browsing through the various tables in the MySQL database the attacker was able to discover password hashes of all the users.  
+    - The attacker was able to exfiltrate the password hashes data
 - Unsalted User Password Hash (WordPress database) 
-  - The attacker was able to use the MySQL wordpress database to aquire unsalted password hashes 
-   - These unsalted hashes are easily cracked using John the Ripper 
-
+  - The attacker was able to use the MySQL wordpress database to acquire & exfiltrate unsalted password hashes 
+   - These unsalted hashes are easily cracked using John the Ripper
+   - This allowed access to an account for the attacker to escalate their privileges 
+- Misconfiguration of User Privileges/Privilege Escalation  
+  - The attackers noticed that Steven had sudo privileges 
+    - This allowed the attacker to run a sudo python command to gain access to a root shell
+  
 ### Exploitation
-_TODO: Fill out the details below. Include screenshots where possible._
-
 The Red Team was able to penetrate **`Target 1`** and retrieve the following confidential data:
-- Target 1
-  - `flag1.txt`: _TODO: Insert `flag1.txt` hash value_
-    - **Exploit Used**
-      - _TODO: Identify the exploit used_
-      - _TODO: Include the command run_
+## Flag 1
+- The attacker first needs to gain access to the webserver, since they know that the target is running a wordpress site on the server they can use WPScan to enumerate the Users of the site
+  
+```bash
+root@Kali:~# wpscan --url http://192.168.1.110/wordpress -eu
+```  
+  [![WPScan](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/WPScan.PNG)](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/WPScan.PNG)
+
+[![WPScan-findings](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/WPScan-Findings.PNG)](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/WPScan-Findings.PNG)
+
+[![WPScan-Users](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/WPScan-Users.PNG)](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/WPScan-Users.PNG)
+
+ `flag1.txt: flag1{b9bbcb33e11b80be759c4e844862482d}`
+ - **Exploit Used: User Enumeration & Weak password**
+      - Using the enumerated User **`Michael`** the attacker discovered the username & password were identical by guessing the password allowing for SSH connection
+    - **Command:** `ssh michael@192.168.1.110` 
+  [![SSH-via-Michael](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/SSH-via-user-michael.PNG)](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/SSH-via-user-michael.PNG)
+  
   - `flag2.txt`: _TODO: Insert `flag2.txt` hash value_
     - **Exploit Used**
       - _TODO: Identify the exploit used_
