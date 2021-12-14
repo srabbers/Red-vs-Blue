@@ -96,7 +96,12 @@ root@Kali:~# wpscan --url http://192.168.1.110/wordpress -eu
   
   - Once the attacker SSH connection was successful into **`Michael's`** account they were able to look through his directories for any confidential data about the webserver
     - This will help further the attack along with finding `flags 1 & 2`
-  - While looking through /var/www the attacker found the HTML directory in which `flag1.txt` was found in html/service.html 
+  - While looking through /var/www/html the attacker used grep to search the directories files for flag1
+  
+  ```bash
+    grep -R flag1
+  ``` 
+  
   ![Flag1](https://github.com/srabbers/Final-Project/blob/c5672d2a3cdf9f1e44b96f747d6e06aadb2caefa/Diagrams-and-Media/flag1.PNG)
   
 
