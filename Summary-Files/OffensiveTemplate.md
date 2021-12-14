@@ -75,25 +75,37 @@ $ nmap -sV 192.168.1.110
   
 ### Exploitation
 The Red Team was able to penetrate **`Target 1`** and retrieve the following confidential data:
-## Flag 1
-- The attacker first needs to gain access to the webserver, since they know that the target is running a wordpress site on the server they can use WPScan to enumerate the Users of the site
+## Flag 1 
+ `flag1.txt: flag1{b9bbcb33e11b80be759c4e844862482d}`
+- **Exploit Used: User Enumeration & Weak password**
+  - The attacker first needs to gain access to the webserver, since they know that the target is running a wordpress site on the server they can use WPScan to enumerate the Users and other information from the site
   
 ```bash
 root@Kali:~# wpscan --url http://192.168.1.110/wordpress -eu
 ```  
   [![WPScan](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/WPScan.PNG)](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/WPScan.PNG)
 
-[![WPScan-findings](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/WPScan-Findings.PNG)](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/WPScan-Findings.PNG)
+  [![WPScan-findings](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/WPScan-Findings.PNG)](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/WPScan-Findings.PNG)
 
-[![WPScan-Users](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/WPScan-Users.PNG)](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/WPScan-Users.PNG)
+  [![WPScan-Users](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/WPScan-Users.PNG)](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/WPScan-Users.PNG)
 
- `flag1.txt: flag1{b9bbcb33e11b80be759c4e844862482d}`
- - **Exploit Used: User Enumeration & Weak password**
-      - Using the enumerated User **`Michael`** the attacker discovered the username & password were identical by guessing the password allowing for SSH connection
-    - **Command:** `ssh michael@192.168.1.110` 
+  - Using the enumerated User **`Michael`** the attacker discovered the username & password were identical by guessing the password allowing for SSH connection
+   ```bash
+    ssh michael@192.168.1.110
+  ``` 
   [![SSH-via-Michael](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/SSH-via-user-michael.PNG)](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/SSH-via-user-michael.PNG)
   
+  - Once we have SSH connection into **`Michael's`** account we able to look through his files for any confidential data to help further the attack
+  - 
+
+
+
+
+
+
+  -
   - `flag2.txt`: _TODO: Insert `flag2.txt` hash value_
     - **Exploit Used**
       - _TODO: Identify the exploit used_
       - _TODO: Include the command run_
+      -
