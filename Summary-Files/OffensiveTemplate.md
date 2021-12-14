@@ -78,8 +78,7 @@ The Red Team was able to penetrate **`Target 1`** and retrieve the following con
 ## Flag 1 
  `flag1.txt: flag1{b9bbcb33e11b80be759c4e844862482d}`
 - **Exploit Used: User Enumeration & Weak password**
-  - The attacker first needs to gain access to the webserver, since they know that the target is running a wordpress site on the server they can use WPScan to enumerate the Users and other information from the site
-  
+  - The attacker first needs to gain access to the webserver using WPScan they can enumerate the Users and other information from the site
 ```bash
 root@Kali:~# wpscan --url http://192.168.1.110/wordpress -eu
 ```  
@@ -95,8 +94,11 @@ root@Kali:~# wpscan --url http://192.168.1.110/wordpress -eu
   ``` 
   [![SSH-via-Michael](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/SSH-via-user-michael.PNG)](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/SSH-via-user-michael.PNG)
   
-  - Once we have SSH connection into **`Michael's`** account we able to look through his files for any confidential data to help further the attack
-  - 
+  - Once the attacker SSH connection was successful into **`Michael's`** account they were able to look through his directories for any confidential data about the webserver
+    - This will help further the attack along with finding `flags 1 & 2`
+  - While looking through /var/www the attacker found the HTML directory in which `flag1.txt` was found in html/service.html 
+  ![Flag1](https://github.com/srabbers/Final-Project/blob/c5672d2a3cdf9f1e44b96f747d6e06aadb2caefa/Diagrams-and-Media/flag1.PNG)
+  
 
 
 
