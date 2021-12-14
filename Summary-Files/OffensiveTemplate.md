@@ -80,7 +80,7 @@ The Red Team was able to penetrate **`Target 1`** and retrieve the following con
 - **Exploit Used: User Enumeration & Weak password**
   - The attacker first needs to gain access to the webserver using WPScan they can enumerate the Users and other information from the site
 ```bash
-root@Kali:~# wpscan --url http://192.168.1.110/wordpress -eu
+$ wpscan --url http://192.168.1.110/wordpress -eu
 ```  
   [![WPScan](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/WPScan.PNG)](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/WPScan.PNG)
 
@@ -90,7 +90,7 @@ root@Kali:~# wpscan --url http://192.168.1.110/wordpress -eu
 
   - Using the enumerated User **`Michael`** the attacker discovered the username & password were identical by guessing the password allowing for SSH connection
    ```bash
-    ssh michael@192.168.1.110
+  $ ssh michael@192.168.1.110
   ``` 
   [![SSH-via-Michael](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/SSH-via-user-michael.PNG)](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/SSH-via-user-michael.PNG)
   
@@ -99,7 +99,7 @@ root@Kali:~# wpscan --url http://192.168.1.110/wordpress -eu
   - While looking through /var/www/html the attacker used grep to search the directories files for flag1
   
 ```bash
-  grep -R flag1
+$ grep -R flag1
 ``` 
   
   ![Flag1](https://github.com/srabbers/Final-Project/blob/c5672d2a3cdf9f1e44b96f747d6e06aadb2caefa/Diagrams-and-Media/flag1.PNG)
