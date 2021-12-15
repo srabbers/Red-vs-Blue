@@ -80,7 +80,7 @@ The Red Team was able to penetrate **`Target 1`** and retrieve the following con
  `flag2{fc3fd58dcdad9ab23faca6e9a36e581c}`
 
 **Exploits Used: User Enumeration, Weak password, Unauthorized File Access**
-  - The attacker first needed to gain access to the webserver using WPScan they can enumerate the Users and other information from the site
+  - Gaining access to the webserver using WPScan its possible to enumerate the Users and other information from the site
 ```bash
 $ wpscan --url http://192.168.1.110/wordpress -eu
 ```  
@@ -90,14 +90,14 @@ $ wpscan --url http://192.168.1.110/wordpress -eu
 
   [![WPScan-Users](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/WPScan-Users.PNG)](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/WPScan-Users.PNG)
 
-  - Using the enumerated User **`Michael`** the attacker discovered the username & password were identical by guessing the weak password allowing for successful SSH connection
+  - Using the enumerated User **`Michael`** it was easy to discovered the username & password were identical by guessing the weak password 
   
    ```bash
   $ ssh michael@192.168.1.110
   ``` 
   [![SSH-via-Michael](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/SSH-via-user-michael.PNG)](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/SSH-via-user-michael.PNG)
   
-  - Once the attackers SSH connection was successful into **`Michael's`** shell their reconnaissance for the attack could continue 
+  - Once SSH connection was successful into **`Michael's`** shell their reconnaissance for the attack could continue 
     - This allows the attacker unauthorized access to **`Michael's`** entire account
   - While looking through /var/www/ the attacker managed to find `flag1 & flag2`
     - `flag1` was found in the /html/service.html file using grep to search the /var/www/ directory
@@ -106,7 +106,7 @@ $ wpscan --url http://192.168.1.110/wordpress -eu
 ```bash
 $ grep -R flag1
 ``` 
-  ![Flag1](https://github.com/srabbers/Final-Project/blob/c5672d2a3cdf9f1e44b96f747d6e06aadb2caefa/Diagrams-and-Media/flag1.PNG)
+![Flag1](https://github.com/srabbers/Final-Project/blob/c5672d2a3cdf9f1e44b96f747d6e06aadb2caefa/Diagrams-and-Media/flag1.PNG)
   
 ```bash
 $ ls -lah
@@ -118,11 +118,23 @@ $ ls -lah
   
 **Exploits Used: Unauthorized Access, Unauthorized MySQL Database Access, & MySQL Data Exfiltration**
 
-  - The attacker continued using the unauthorized access of **`Michael's`** account to look for the `MySQL Wordpress database` config-file.php 
+  - Using the unauthorized access of **`Michael's`** account to look for the `MySQL database` config-file.php 
     - The config-file.php was found in the /var/www/html/wordpress directory 
-    - Using the `cat` command to read the config-file.php the root password for the `MySQL Wordpress database` was discovered
+    - Using the `cat` command to read the config-file.php file the root password for the `MySQL database` was discovered giving access to the `MySQL database`
+    
+![MySQL-config-file](https://github.com/srabbers/Final-Project/blob/a82bbc23f2e6292ef46ae1caa883eb9fde8b97f8/Diagrams-and-Media/MySQL-DB-config-file.PNG)
+
+![MySQL-root-password](https://github.com/srabbers/Final-Project/blob/a82bbc23f2e6292ef46ae1caa883eb9fde8b97f8/Diagrams-and-Media/MySQL-DB-info.PNG)
+
+![MySQL-access](https://github.com/srabbers/Final-Project/blob/772f596d6ecf7e99ad196c87b96dab3a7f39b835/Diagrams-and-Media/MySQL-Access.PNG)
+
+  - `MySQL` was used to change databases, show tables, view tables, & display field data
+    - `use wordpress;` is used to change to the wordpress database
+    - `show tables;` is used to show the tables of the wordpress database
+    - `describe wp_users;` is used the show the field ID's of the wp_users table
+    - `select user_login, user_pass from wp_users;` is used to view the data for the selected fields
+  - The output of `select` gave the user_login names & user_pass hashes in plain text
   
-  ![MySQL-config-file](https://github.com/srabbers/Final-Project/blob/a82bbc23f2e6292ef46ae1caa883eb9fde8b97f8/Diagrams-and-Media/MySQL-DB-config-file.PNG)
+  ![MySQL-WP-DB](https://github.com/srabbers/Final-Project/blob/772f596d6ecf7e99ad196c87b96dab3a7f39b835/Diagrams-and-Media/MySQL-wordpress-DB.PNG)
 
-  ![MySQL-root-password](https://github.com/srabbers/Final-Project/blob/a82bbc23f2e6292ef46ae1caa883eb9fde8b97f8/Diagrams-and-Media/MySQL-DB-info.PNG)
-
+  ![MySQL-WP-](https://github.com/srabbers/Final-Project/blob/772f596d6ecf7e99ad196c87b96dab3a7f39b835/Diagrams-and-Media/MySQL-wp_users.PNG)
