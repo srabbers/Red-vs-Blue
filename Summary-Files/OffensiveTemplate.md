@@ -163,12 +163,20 @@ mysql> select * from wp_posts;
 - `John the ripper` was used to crack the password hashes exfiltrated from the `MySQL database`
    - `John` was able to crack the password hash for the user `Steven` 
    - Discovering the password: `pink84`
-   - 
 ```bash
 john wp_hashes.txt
+```
+![John-cracked](https://github.com/srabbers/Final-Project/blob/133ba819bd790cd0d8e4837572bb43c5721b3259/Diagrams-and-Media/John-hashes.PNG)
+
+```bash 
 john --show wp_hashes.txt
 ``` 
-![John-cracked](https://github.com/srabbers/Final-Project/blob/133ba819bd790cd0d8e4837572bb43c5721b3259/Diagrams-and-Media/John-hashes.PNG)
 
 ![John-cracked](https://github.com/srabbers/Final-Project/blob/133ba819bd790cd0d8e4837572bb43c5721b3259/Diagrams-and-Media/John-cracked-hash.PNG)
 
+- Using the cracked password `pink84` we can now SSH into the user `Steven`
+  - Once SSH is successful we check the user for sudo privledges 
+```bash 
+ssh steven@192.168.1.110
+``` 
+![SSH-Steven](https://github.com/srabbers/Final-Project/blob/8acf5482b55bbb213250dbb1d55fa18df0fe0863/Diagrams-and-Media/SSH-via-user-steven.PNG)
