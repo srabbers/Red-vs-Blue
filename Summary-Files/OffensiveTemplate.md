@@ -131,16 +131,19 @@ $ ls -lah
 
 ![MySQL-access](https://github.com/srabbers/Final-Project/blob/772f596d6ecf7e99ad196c87b96dab3a7f39b835/Diagrams-and-Media/MySQL-Access.PNG)
 
-  - `MySQL` was used to change databases, show tables, view tables, & display field data
-    - `use wordpress;` is used to change to the wordpress database
-    - `show tables;` is used to show the tables of the wordpress database
-    - `describe wp_users;` is used the show the field ID's of the wp_users table
-    - `select user_login, user_pass from wp_users;` is used to view the data for the selected fields
+  - `MySQL` was used to show & change databases, show tables, view tables, & display field data
+    
+  - `show databases;` is used to show the current MySQL databases
+  - `use wordpress;` is used to change to the wordpress database
+  - `show tables;` is used to show the tables of the wordpress database
+    
+  ![MySQL-WP-DB](https://github.com/srabbers/Final-Project/blob/772f596d6ecf7e99ad196c87b96dab3a7f39b835/Diagrams-and-Media/MySQL-wordpress-DB.PNG) 
+
+  - `describe wp_users;` is used the show the field ID's of the wp_users table
+  - `select user_login, user_pass from wp_users;` is used to view the data for the selected fields
       - The output of `select` gave the user_login names & user_pass hashes in plain text
       - These hashes were exfiltrated to the kali linux machine & put into wp_hashes.txt
   
-  ![MySQL-WP-DB](https://github.com/srabbers/Final-Project/blob/772f596d6ecf7e99ad196c87b96dab3a7f39b835/Diagrams-and-Media/MySQL-wordpress-DB.PNG)
-
   ![MySQL-WP-](https://github.com/srabbers/Final-Project/blob/772f596d6ecf7e99ad196c87b96dab3a7f39b835/Diagrams-and-Media/MySQL-wp_users.PNG)
 
   - `MySQL` was also used to find `flag3` in the table `wp_posts` 
