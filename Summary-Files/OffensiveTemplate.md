@@ -75,9 +75,11 @@ $ nmap -sV 192.168.1.110
   
 ### Exploitation
 The Red Team was able to penetrate **`Target 1`** and retrieve the following confidential data:
+
 **Flag 1 & 2**
- `flag1.txt: flag1{b9bbcb33e11b80be759c4e844862482d}`
- `flag2{fc3fd58dcdad9ab23faca6e9a36e581c}`
+
+ - `flag1.txt: flag1{b9bbcb33e11b80be759c4e844862482d}`
+ - `flag2{fc3fd58dcdad9ab23faca6e9a36e581c}`
 
 **Exploits Used: User Enumeration, Weak password, Unauthorized File Access**
   - Gaining access to the webserver using WPScan its possible to enumerate the Users and other information from the site
@@ -140,9 +142,8 @@ $ ls -lah
 
   ![MySQL-WP-](https://github.com/srabbers/Final-Project/blob/772f596d6ecf7e99ad196c87b96dab3a7f39b835/Diagrams-and-Media/MySQL-wp_users.PNG)
 
-  - `MySQL` was also used to find flag3 in the table `wp_posts` 
+  - `MySQL` was also used to find `flag3` in the table `wp_posts` 
     - `select * from wp_posts;`  was used to discover the flag 
   
   ![flag3](https://github.com/srabbers/Final-Project/blob/3dcaf420cedc6e31b1b4a6fc0a2da6a49d115be1/Diagrams-and-Media/flag3.PNG)
 
-  
