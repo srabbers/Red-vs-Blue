@@ -76,11 +76,6 @@ $ nmap -sV 192.168.1.110
 ### Exploitation
 The Red Team was able to penetrate **`Target 1`** and retrieve the following confidential data:
 
-**Flag 1 & 2**
-
- - `flag1.txt: flag1{b9bbcb33e11b80be759c4e844862482d}`
- - `flag2{fc3fd58dcdad9ab23faca6e9a36e581c}`
-
 **Exploits Used: User Enumeration, Weak password, Unauthorized File Access**
   - Gaining access to the webserver using WPScan its possible to enumerate the Users and other information from the site
 ```bash
@@ -104,6 +99,11 @@ $ wpscan --url http://192.168.1.110/wordpress -eu
   - While looking through /var/www/ the attacker managed to find `flag1 & flag2`
     - `flag1` was found in the /html/service.html file using grep to search the /var/www/ directory
     - `flag2` was found while searching the /var/www/ directory for hidden files & directories
+  
+**Flag 1 & 2**
+
+ - `flag1{b9bbcb33e11b80be759c4e844862482d}`
+ - `flag2{fc3fd58dcdad9ab23faca6e9a36e581c}`
   
 ```bash
 $ grep -R flag1
