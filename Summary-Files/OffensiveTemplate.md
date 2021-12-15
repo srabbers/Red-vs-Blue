@@ -79,7 +79,7 @@ The Red Team was able to penetrate **`Target 1`** and retrieve the following con
  `flag1.txt: flag1{b9bbcb33e11b80be759c4e844862482d}`
  `flag2{fc3fd58dcdad9ab23faca6e9a36e581c}`
 
-**Exploit Used: User Enumeration, Weak password, Unauthorized File Access**
+**Exploits Used: User Enumeration, Weak password, Unauthorized File Access**
   - The attacker first needed to gain access to the webserver using WPScan they can enumerate the Users and other information from the site
 ```bash
 $ wpscan --url http://192.168.1.110/wordpress -eu
@@ -97,9 +97,9 @@ $ wpscan --url http://192.168.1.110/wordpress -eu
   ``` 
   [![SSH-via-Michael](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/SSH-via-user-michael.PNG)](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/SSH-via-user-michael.PNG)
   
-  - Once the attackers SSH connection was successful into **`Michael's`** account on the sever they were able to look through his directories for any confidential data about the webserver
-    - This will allow the attacker Unauthorized File Access to search for confidential data to further the attack
-  - While searching through /var/www/ the attacker managed to find `flag1 & flag2`
+  - Once the attackers SSH connection was successful into **`Michael's`** shell their reconnaissance for the attack could continue 
+    - This allows the attacker unauthorized access to **`Michael's`** entire account
+  - While looking through /var/www/ the attacker managed to find `flag1 & flag2`
     - `flag1` was found in the /html/service.html file using grep to search the /var/www/ directory
     - `flag2` was found while searching the /var/www/ directory for hidden files & directories
   
@@ -116,5 +116,13 @@ $ ls -lah
 **Flag 3**  
 - flag3.txt: `flag3{afc01ab56b50591e7dccf93122770cd2}`
   
-**Exploits Used: Unauthorized File Access, Unauthorized MySQL Database Access, & MySQL Data Exfiltration**
-  - 
+**Exploits Used: Unauthorized Access, Unauthorized MySQL Database Access, & MySQL Data Exfiltration**
+
+  - The attacker continued using the unauthorized access of **`Michael's`** account to look for the `MySQL Wordpress database` config-file.php 
+    - The config-file.php was found in the /var/www/html/wordpress directory 
+    - Using the `cat` command to read the config-file.php the root password for the `MySQL Wordpress database` was discovered
+  
+  ![MySQL-config-file](https://github.com/srabbers/Final-Project/blob/a82bbc23f2e6292ef46ae1caa883eb9fde8b97f8/Diagrams-and-Media/MySQL-DB-config-file.PNG)
+
+  ![MySQL-root-password](https://github.com/srabbers/Final-Project/blob/a82bbc23f2e6292ef46ae1caa883eb9fde8b97f8/Diagrams-and-Media/MySQL-DB-info.PNG)
+
