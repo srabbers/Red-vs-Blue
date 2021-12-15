@@ -133,8 +133,16 @@ $ ls -lah
     - `show tables;` is used to show the tables of the wordpress database
     - `describe wp_users;` is used the show the field ID's of the wp_users table
     - `select user_login, user_pass from wp_users;` is used to view the data for the selected fields
-  - The output of `select` gave the user_login names & user_pass hashes in plain text
+      - The output of `select` gave the user_login names & user_pass hashes in plain text
+      - These hashes were exfiltrated to the kali linux machine & put into wp_hashes.txt
   
   ![MySQL-WP-DB](https://github.com/srabbers/Final-Project/blob/772f596d6ecf7e99ad196c87b96dab3a7f39b835/Diagrams-and-Media/MySQL-wordpress-DB.PNG)
 
   ![MySQL-WP-](https://github.com/srabbers/Final-Project/blob/772f596d6ecf7e99ad196c87b96dab3a7f39b835/Diagrams-and-Media/MySQL-wp_users.PNG)
+
+  - `MySQL` was also used to find flag3 in the table `wp_posts` 
+    - `select * from wp_posts;`  was used to discover the flag 
+  
+  ![flag3](https://github.com/srabbers/Final-Project/blob/3dcaf420cedc6e31b1b4a6fc0a2da6a49d115be1/Diagrams-and-Media/flag3.PNG)
+
+  
