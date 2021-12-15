@@ -59,7 +59,7 @@ $ nmap -sV 192.168.1.110
 - Weak User Password
   -  A user had a weak password that was easily figured out by guessing
      -  The guessed password was then used to SSH into the web server allowing the attacker access to confidential data
-- MySQL Database Access  
+- Unauthorized MySQL Database Access  
   - The attacker was able to discover a file on a users machine containing login information for the      MySQL database  
     - They were able to use the login information to gain access to the MySQL database  
 - MySQL Data Exfiltration  
@@ -75,10 +75,12 @@ $ nmap -sV 192.168.1.110
   
 ### Exploitation
 The Red Team was able to penetrate **`Target 1`** and retrieve the following confidential data:
-## Flag 1 
+**Flag 1 & 2**
  `flag1.txt: flag1{b9bbcb33e11b80be759c4e844862482d}`
-- **Exploit Used: User Enumeration & Weak password**
-  - The attacker first needs to gain access to the webserver using WPScan they can enumerate the Users and other information from the site
+ `flag2{fc3fd58dcdad9ab23faca6e9a36e581c}`
+
+**Exploit Used: User Enumeration, Weak password, Unauthorized File Access**
+  - The attacker first needed to gain access to the webserver using WPScan they can enumerate the Users and other information from the site
 ```bash
 $ wpscan --url http://192.168.1.110/wordpress -eu
 ```  
@@ -88,31 +90,31 @@ $ wpscan --url http://192.168.1.110/wordpress -eu
 
   [![WPScan-Users](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/WPScan-Users.PNG)](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/WPScan-Users.PNG)
 
-  - Using the enumerated User **`Michael`** the attacker discovered the username & password were identical by guessing the password allowing for SSH connection
+  - Using the enumerated User **`Michael`** the attacker discovered the username & password were identical by guessing the weak password allowing for successful SSH connection
+  
    ```bash
   $ ssh michael@192.168.1.110
   ``` 
   [![SSH-via-Michael](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/SSH-via-user-michael.PNG)](https://github.com/srabbers/Final-Project/blob/57dcd6505154cc094521e6774a2725700501c7cb/Diagrams-and-Media/SSH-via-user-michael.PNG)
   
-  - Once the attacker SSH connection was successful into **`Michael's`** account they were able to look through his directories for any confidential data about the webserver
-    - This will help further the attack along with finding `flags 1 & 2`
-  - While looking through /var/www/html the attacker used grep to search the directories files for flag1
+  - Once the attackers SSH connection was successful into **`Michael's`** account on the sever they were able to look through his directories for any confidential data about the webserver
+    - This will allow the attacker Unauthorized File Access to search for confidential data to further the attack
+  - While searching through /var/www/ the attacker managed to find `flag1 & flag2`
+    - `flag1` was found in the /html/service.html file using grep to search the /var/www/ directory
+    - `flag2` was found while searching the /var/www/ directory for hidden files & directories
   
 ```bash
 $ grep -R flag1
 ``` 
-  
   ![Flag1](https://github.com/srabbers/Final-Project/blob/c5672d2a3cdf9f1e44b96f747d6e06aadb2caefa/Diagrams-and-Media/flag1.PNG)
   
+```bash
+$ ls -lah
+``` 
+![Flag2](https://github.com/srabbers/Final-Project/blob/1038224e318f03276c352bcc7361ddf85e832bd0/Diagrams-and-Media/flag2.PNG)
 
-
-
-
-
-
-  -
-  - `flag2.txt`: _TODO: Insert `flag2.txt` hash value_
-    - **Exploit Used**
-      - _TODO: Identify the exploit used_
-      - _TODO: Include the command run_
-      -
+**Flag 3**  
+- flag3.txt: `flag3{afc01ab56b50591e7dccf93122770cd2}`
+  
+**Exploits Used: Unauthorized File Access, Unauthorized MySQL Database Access, & MySQL Data Exfiltration**
+  - 
