@@ -102,22 +102,21 @@ $ wpscan --url http://192.168.1.110/wordpress -eu
     - `flag1` was found in the /html/service.html file using grep to search the /var/www/ directory
     - `flag2` was found while searching the /var/www/ directory for hidden files & directories
    
+- `flag1{b9bbcb33e11b80be759c4e844862482d}`
 ```bash
 $ grep -R flag1
 ``` 
 ![Flag1](https://github.com/srabbers/Final-Project/blob/c5672d2a3cdf9f1e44b96f747d6e06aadb2caefa/Diagrams-and-Media/flag1.PNG)
   
- - `flag1{b9bbcb33e11b80be759c4e844862482d}`
+- `flag2{fc3fd58dcdad9ab23faca6e9a36e581c}`
   
 ```bash
 $ ls -lah
 ``` 
 ![Flag2](https://github.com/srabbers/Final-Project/blob/1038224e318f03276c352bcc7361ddf85e832bd0/Diagrams-and-Media/flag2.PNG)
 
-- `flag2{fc3fd58dcdad9ab23faca6e9a36e581c}`
 
 **Flag 3**  
-- flag3.txt: `flag3{afc01ab56b50591e7dccf93122770cd2}`
   
 **Exploits Used: Unauthorized Access, Unauthorized MySQL Database Access, & MySQL Data Exfiltration**
 
@@ -148,6 +147,28 @@ $ ls -lah
 
   - `MySQL` was also used to find `flag3` in the table `wp_posts` 
     - `select * from wp_posts;`  was used to discover the flag 
+
+  - `flag3{afc01ab56b50591e7dccf93122770cd2}`
+
+```bash
+mysql> select * from wp_posts;
+``` 
   
-  ![flag3](https://github.com/srabbers/Final-Project/blob/3dcaf420cedc6e31b1b4a6fc0a2da6a49d115be1/Diagrams-and-Media/flag3.PNG)
+  ![flag3](https://github.com/srabbers/Final-Project/blob/3dcaf420cedc6e31b1b4a6fc0a2da6a49d115be1/Diagrams-and-Media/flag3.PN)
+
+**Flag 4** 
+
+**Exploits used: John the ripper, Unauthorized access, & Misconfiguration of User Privileges/Privilege Escalation**
+
+- `John the ripper` was used to crack the password hashes exfiltrated from the `MySQL database`
+   - `John` was able to crack the password hash for the user `Steven` 
+   - Discovering the password: `pink84`
+   - 
+```bash
+john wp_hashes.txt
+john --show wp_hashes.txt
+``` 
+![John-cracked](https://github.com/srabbers/Final-Project/blob/133ba819bd790cd0d8e4837572bb43c5721b3259/Diagrams-and-Media/John-hashes.PNG)
+
+![John-cracked](https://github.com/srabbers/Final-Project/blob/133ba819bd790cd0d8e4837572bb43c5721b3259/Diagrams-and-Media/John-cracked-hash.PNG)
 
